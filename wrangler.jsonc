@@ -1,0 +1,12 @@
+// Cloudflare Worker that serves this repository as static assets. No script: the site is plain files.
+{
+  "$schema": "https://unpkg.com/wrangler@4.161.0/config-schema.json",
+  "name": "lean-into-physics",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": ".",
+    // /program serves program.html; /program.html redirects to /program.
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}
