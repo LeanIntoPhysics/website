@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Is a Physical State? · Lean into Physics</title>
+<meta name="description" content="Lesson 001 of Lean into Physics: what a description of the world must contain to support a prediction.">
+<meta name="theme-color" content="#F5F0E6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#191714" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script>document.documentElement.classList.add("js");try{var t=localStorage.getItem("lip-theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/print.css" media="print">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to the content</a>
+<header class="site-header">
+  <div class="inner">
+    <a class="brand" href="./">
+      <svg class="mark" width="40" height="16" viewBox="0 0 120 48" role="img" aria-label="The mark: four states, two of them joined"><path class="arc" d="M45 26 C 52 3, 98 3, 105 26" fill="none" stroke-width="2.6" stroke-linecap="round"/><circle cx="15" cy="34" r="6.5"/><circle cx="45" cy="34" r="6.5"/><circle cx="75" cy="34" r="6.5"/><circle cx="105" cy="34" r="6.5"/></svg>
+      <span>Lean into Physics</span>
+    </a>
+    <span class="spacer"></span>
+    <nav aria-label="Site">
+      <a href="./#contents">Contents</a>
+      <a href="program.html">Program</a>
+      <a href="https://github.com/LeanIntoPhysics">Source</a>
+      <button type="button" class="theme-switch" hidden aria-label="Switch colour theme">dark</button>
+    </nav>
+  </div>
+</header>
+
+<main class="lesson" id="main">
+
+  <div class="opener">
+    <p class="lesson-number">Part I · The shape of a theory · Lesson 001</p>
+    <h1 class="lesson-title">What Is a Physical State?</h1>
+    <div class="question-block">
+      <p class="label question-label">The question</p>
+      <p class="question">What must be true of a description of the world for it to support a prediction?</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="main">
+      <p><span class="dropcap">N</span>o particles, forces or coordinates yet. We build physics from the bottom up, with the benefit of knowing where four hundred years of work eventually led.</p>
+    </div>
+    <aside class="aside"></aside>
+  </div>
+
+  <!-- 1.1 -->
+  <h2><span class="num">1.1</span><span class="title">A box with two buttons</span></h2>
+
+  <div class="row">
+    <div class="main">
+      <p>Imagine a sealed box with two buttons and a display. Press <span class="sc">a</span> and the display shows 0. Press <span class="sc">b</span> and it shows 1.</p>
+    </div>
+    <aside class="aside"></aside>
+  </div>
+
+  <div class="row">
+    <div class="main">
+      <p>We can write down exactly what the experiment warrants: two outputs, O&nbsp;=&nbsp;{0,&nbsp;1}; two interventions, I&nbsp;=&nbsp;{<span class="sc">a</span>,&nbsp;<span class="sc">b</span>}; and the behaviour <span class="sc">a</span>&nbsp;↦&nbsp;0, <span class="sc">b</span>&nbsp;↦&nbsp;1. That is enough to predict the display after either button.</p>
+    </div>
+    <aside class="aside"></aside>
+  </div>
+
+  <div class="row">
+    <div class="main">
+      <p>But have we described the box’s physical state? Not necessarily. Inside could be two redundant computers, a mechanical toggle, or a tiny person changing the display. The outside behaviour can’t tell them apart.</p>
+    </div>
+    <aside class="aside"></aside>
+  </div>
+
+  <div class="row">
+    <div class="main">
+      <p class="thesis">A description sufficient for a particular prediction need not describe everything physically present.</p>
+    </div>
+    <aside class="aside"></aside>
+  </div>
+
+  <!-- 1.2 -->
+  <h2><span class="num">1.2</span><span class="title">State is relative to a model</span></h2>
+
+  <div class="row">
+    <div class="main">
+      <p>A second box has an internal variable <em>x</em> with four values, S&nbsp;=&nbsp;{0,&nbsp;1,&nbsp;2,&nbsp;3}. Its display shows only parity: <em>o</em>(<em>x</em>)&nbsp;=&nbsp;<em>x</em>&nbsp;mod&nbsp;2. States 0 and 2 look identical through this display, and so do 1 and 3.</p>
+    </div>
+    <aside class="aside"></aside>
+  </div>
+
+  <div class="row">
+    <div class="main">
+      <table class="data">
+        <caption><span class="figure-number">Table 1.1</span> What the display shows.</caption>
+        <thead><tr><th scope="col">Internal state</th><th scope="col">Display</th></tr></thead>
+        <tbody>
+          <tr><td>0</td><td>0</td></tr>
+          <tr><td>1</td><td>1</td></tr>
+          <tr><td>2</td><td>0</td></tr>
+          <tr><td>3</td><td>1</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <aside class="aside"></aside>
+  </div>
+
+  <div class="row no-indent">
+    <div class="main">
+      <p>Write <em>s</em>&nbsp;~&nbsp;<em>t</em> when <em>o</em>(<em>s</em>)&nbsp;=&nbsp;<em>o</em>(<em>t</em>). Then ~ splits the states into classes:</p>
+      <div class="display" role="math" aria-label="S modulo similarity equals the set of the classes 0 and 2, and 1 and 3">
+        <span><em>S</em>/~ &nbsp;=&nbsp; {{0,&nbsp;2},&nbsp;{1,&nbsp;3}}</span><span class="eqnum">(1.1)</span>
+      </div>
+    </div>
+    <aside class="aside">
+      <details class="math" open><summary><span class="label">New math · Equivalence relation</span><span class="pm" aria-hidden="true"></span></summary><div class="newmath">
+        <div class="head"><span class="label">New math</span><span class="id">M.01</span></div>
+        <p class="term">Equivalence relation</p>
+        <p>A relation that is reflexive, symmetric and transitive. It splits a set into non-overlapping classes. The set of classes is the <em>quotient</em>, written <em>S</em>/~.</p>
+      </div></details>
+    </aside>
+  </div>
+
+  <div class="row no-indent">
+    <div class="main">
+      <p class="thesis">Observations induce a quotient of the state space.</p>
+    </div>
+    <aside class="aside"></aside>
+  </div>
+
+  <div class="row">
+    <div class="main">
+      <p>Now the question that makes this physics rather than set theory: can two states that look identical now behave differently later?</p>
+    </div>
+    <aside class="aside"></aside>
+  </div>
+
+  <!-- 1.3 -->
+  <h2><span class="num">1.3</span><span class="title">Dynamics changes what we must distinguish</span></h2>
+
+  <div class="row">
+    <div class="main">
+      <p>Give the box a button marked <span class="sc">next</span>.<sup class="note-marker">1</sup> Pressing it moves the box to a new state by a fixed rule: 0 goes to 1, and every other state goes to 2.</p>
+    </div>
+    <aside class="aside">
+      <details class="note" open><summary><span class="label">Note 1</span><span class="pm" aria-hidden="true"></span></summary><p class="sidenote"><span class="n">1</span>Throughout, a <em>press</em> is one application of the rule. In a game loop it is a tick.</p></details>
+    </aside>
+  </div>
+
+  <div class="row spaced">
+    <div class="main">
+      <figure class="box-figure figure-live" aria-labelledby="fig11cap" data-box-figure>
+        <p class="controls">Start box <span class="sc">a</span> in state <button type="button" class="num-control" data-which="a">1</button><span class="scale" data-scale="a" aria-hidden="true" hidden></span> and box <span class="sc">b</span> in state <button type="button" class="num-control" data-which="b">3</button><span class="scale" data-scale="b" aria-hidden="true" hidden></span>, then press <button type="button" class="word-control" data-next>next</button>. To begin again, <button type="button" class="word-control" data-reset>reset</button>.</p>
+        <div class="trace" role="group" aria-label="Displays and hidden states after each press" data-trace></div>
+        <p class="hint" aria-hidden="true">drag ← → · arrow keys · click steps</p>
+        <p class="msg" aria-live="polite" data-msg></p>
+        <figcaption id="fig11cap"><span class="figure-number">Figure 1.1</span> Two boxes, one rule. Drag a red figure sideways, or focus it and use the arrow keys. In print this figure is the table of every starting state.</figcaption>
+      </figure>
+
+      <figure class="figure-static">
+        <div class="fs-head"><span class="fs-from">Start</span><span>display, state beneath, after 0 to 6 presses</span></div>
+          <div class="fs-row"><span class="fs-from">from <code>0</code></span><span class="fs-c">0<sub>0</sub></span><span class="fs-c">1<sub>1</sub></span><span class="fs-c">0<sub>2</sub></span><span class="fs-c">0<sub>2</sub></span><span class="fs-c">0<sub>2</sub></span><span class="fs-c">0<sub>2</sub></span><span class="fs-c">0<sub>2</sub></span></div>
+          <div class="fs-row"><span class="fs-from">from <code>1</code></span><span class="fs-c">1<sub>1</sub></span><span class="fs-c">0<sub>2</sub></span><span class="fs-c">0<sub>2</sub></span><span class="fs-c">0<sub>2</sub></span><span class="fs-c">0<sub>2</sub></span><span class="fs-c">0<sub>2</sub></span><span class="fs-c">0<sub>2</sub></span></div>
+          <div class="fs-row"><span class="fs-from">from <code>2</code></span><span class="fs-c">0<sub>2</sub></span><span class="fs-c">0<sub>2</sub></span><span class="fs-c">0<sub>2</sub></span><span class="fs-c">0<sub>2</sub></span><span class="fs-c">0<sub>2</sub></span><span class="fs-c">0<sub>2</sub></span><span class="fs-c">0<sub>2</sub></span></div>
+          <div class="fs-row"><span class="fs-from">from <code>3</code></span><span class="fs-c">1<sub>3</sub></span><span class="fs-c">0<sub>2</sub></span><span class="fs-c">0<sub>2</sub></span><span class="fs-c">0<sub>2</sub></span><span class="fs-c">0<sub>2</sub></span><span class="fs-c">0<sub>2</sub></span><span class="fs-c">0<sub>2</sub></span></div>
+        <figcaption><span class="figure-number">Figure 1.1</span> Pressing next from each starting state. 1 and 3 show the same display at every press; 0 and 2 part after one.</figcaption>
+      </figure>
+    </div>
+    <aside class="aside">
+      <details class="note" open><summary><span class="label">Note 2</span><span class="pm" aria-hidden="true"></span></summary><p class="sidenote"><span class="n">2</span>Try 1 against 3, then 0 against 2. Within two presses every run reaches state 2 and stays there.</p></details>
+    </aside>
+  </div>
+
+  <div class="row no-indent">
+    <div class="main">
+      <p>States 0 and 2 show the same display now, and different displays after one press. To predict the future, parity is not enough.</p>
+    </div>
+    <aside class="aside"></aside>
+  </div>
+
+  <div class="row">
+    <div class="main">
+      <p>States 1 and 3 are the opposite case. They are different internal states, yet they produce the same display at every press, forever.</p>
+    </div>
+    <aside class="aside"></aside>
+  </div>
+
+  <div class="row">
+    <div class="main">
+      <p>This suggests a stronger equivalence. Two states are <em>predictively equivalent</em> when they produce identical observable histories:</p>
+      <div class="display" role="math" aria-label="s is predictively equivalent to t if and only if, for every natural number n, o of f to the n of s equals o of f to the n of t">
+        <span><em>s</em> ≈ <em>t</em> &nbsp;⇔&nbsp; ∀ <em>n</em> ∈ ℕ, &nbsp;<em>o</em>(<em>f</em><sup><em>n</em></sup>(<em>s</em>)) = <em>o</em>(<em>f</em><sup><em>n</em></sup>(<em>t</em>))</span><span class="eqnum">(1.2)</span>
+      </div>
+    </div>
+    <aside class="aside"></aside>
+  </div>
+
+  <div class="row no-indent">
+    <div class="main">
+      <p>Under ≈ the four internal states fall into three classes: {0}, {2} and {1,&nbsp;3}. Not two, which is what the display shows now, and not four, which is what the box contains, but three: exactly what you need to predict every future display.</p>
+    </div>
+    <aside class="aside">
+      <figure>
+        <svg class="mark" width="150" height="60" viewBox="0 0 120 48" role="img" aria-label="Four states, the last two joined"><path class="arc" d="M45 26 C 52 3, 98 3, 105 26" fill="none" stroke-width="2.6" stroke-linecap="round"/><circle cx="15" cy="34" r="6.5"/><circle cx="45" cy="34" r="6.5"/><circle cx="75" cy="34" r="6.5"/><circle cx="105" cy="34" r="6.5"/></svg>
+        <figcaption><span class="figure-number">Fig. 1.2</span> Three predictive classes from four states: two stand alone, two are joined. This is the book’s mark.</figcaption>
+      </figure>
+    </aside>
+  </div>
+
+  <div class="row">
+    <div class="main">
+      <p class="thesis">A useful state description keeps exactly enough information to predict the observations we care about.</p>
+    </div>
+    <aside class="aside"></aside>
+  </div>
+
+  <div class="row">
+    <div class="main">
+      <p>Statisticians call this a sufficient statistic; computer scientists will recognise automaton minimisation. It assumes deterministic dynamics, a fixed observable and no other interventions. We will relax all three.</p>
+    </div>
+    <aside class="aside"></aside>
+  </div>
+
+  <div class="row">
+    <div class="main">
+      <p>Notice one more thing. Nothing evolves into state 3.<sup class="note-marker">3</sup> Hold on to that; it returns at the end of the lesson.</p>
+    </div>
+    <aside class="aside">
+      <details class="note" open><summary><span class="label">Note 3</span><span class="pm" aria-hidden="true"></span></summary><p class="sidenote"><span class="n">3</span>Check the rule: 0 goes to 1, everything else to 2. No arrow lands on 3. The Lean below proves it.</p></details>
+    </aside>
+  </div>
+
+  <!-- 1.4 -->
+  <h2><span class="num">1.4</span><span class="title">Put it in Lean</span></h2>
+
+  <div class="row">
+    <div class="main">
+      <p>The structure gets a type. <code>f^[n]</code> is Mathlib’s notation for applying <code>f</code> <em>n</em> times.</p>
+    </div>
+    <aside class="aside"></aside>
+  </div>
+
+  <div class="row">
+    <div class="main">
+      <figure class="lean-figure">
+<pre class="lean" tabindex="0" aria-label="Lean code"><code><span class="kw">structure</span> SystemModel <span class="kw">where</span>
+  State : Type u
+  Output : Type v
+  observe : State → Output
+  evolve : State → State
+
+<span class="kw">variable</span> (M : SystemModel.{u, v})
+
+<span class="kw">def</span> after (n : ℕ) (s : M.State) : M.State :=
+  M.evolve^[n] s
+
+<span class="kw">def</span> ObsEquiv (s t : M.State) : Prop :=
+  M.observe s = M.observe t
+
+<span class="kw">def</span> PredEquiv (s t : M.State) : Prop :=
+  ∀ n : ℕ, M.observe (after M n s) = M.observe (after M n t)</code></pre>
+        <figcaption class="lean-provenance">Lesson001.lean · checked at 919d9de</figcaption>
+      </figure>
+    </div>
+    <aside class="aside"></aside>
+  </div>
+
+  <div class="row no-indent">
+    <div class="main">
+      <p>No coordinates, vector spaces, derivatives or probabilities, and yet this model makes predictions.</p>
+    </div>
+    <aside class="aside"></aside>
+  </div>
+
+  <div class="row">
+    <div class="main">
+      <p>The first theorem: predictive equivalence implies observational equivalence. In Lean, a proof that <code>s</code> and <code>t</code> are predictively equivalent is a function: give it a number of presses <code>n</code> and it returns a proof that the displays agree after <code>n</code> presses. To get observational equivalence, apply it to <code>0</code>.<sup class="note-marker">4</sup></p>
+    </div>
+    <aside class="aside"></aside>
+  </div>
+
+  <div class="row">
+    <div class="main">
+      <figure class="lean-figure">
+<pre class="lean" tabindex="0" aria-label="Lean code"><code><span class="kw">theorem</span> PredEquiv.obsEquiv {s t : M.State} (h : PredEquiv M s t) : ObsEquiv M s t :=
+  h 0</code></pre>
+        <figcaption class="lean-provenance">Lesson001.lean · checked at 919d9de</figcaption>
+      </figure>
+    </div>
+    <aside class="aside">
+      <details class="note" open><summary><span class="label">Note 4</span><span class="pm" aria-hidden="true"></span></summary><p class="sidenote"><span class="n">4</span>Nothing about this particular box appears in the proof. <code>h 0</code> works for any machine <code>M</code>.</p></details>
+    </aside>
+  </div>
+
+  <div class="row no-indent">
+    <div class="main">
+      <p>The converse is false, and the box shows it. Here is the box, with every claim from section 1.3 proved:<sup class="note-marker">5</sup></p>
+    </div>
+    <aside class="aside">
+      <details class="note" open><summary><span class="label">Note 5</span><span class="pm" aria-hidden="true"></span></summary><p class="sidenote"><span class="n">5</span><code>decide</code> settles a question by checking every case. With four states, there are few enough cases for Lean to check them all.</p></details>
+    </aside>
+  </div>
+
+  <div class="row">
+    <div class="main">
+      <figure class="lean-figure">
+<pre class="lean" tabindex="0" aria-label="Lean code"><code><span class="kw">def</span> next (x : Fin 4) : Fin 4 :=
+  if x = 0 then 1 else 2
+
+<span class="kw">def</span> parity (x : Fin 4) : Fin 2 :=
+  ⟨x.val % 2, Nat.mod_lt _ (<span class="kw">by</span> norm_num)⟩
+
+<span class="kw">abbrev</span> box : SystemModel <span class="kw">where</span>
+  State := Fin 4
+  Output := Fin 2
+  observe := parity
+  evolve := next
+
+<span class="kw">theorem</span> obs_0_2 : ObsEquiv box 0 2 := <span class="kw">by</span>
+  unfold ObsEquiv; decide
+
+<span class="kw">theorem</span> not_pred_0_2 : ¬ PredEquiv box 0 2 := <span class="kw">by</span>
+  intro h; have h1 := h 1; revert h1; decide
+
+<span class="kw">theorem</span> one_ne_three : (1 : Fin 4) ≠ 3 := <span class="kw">by</span>
+  decide
+
+<span class="kw">theorem</span> pred_1_3 : PredEquiv box 1 3 := <span class="kw">by</span>
+  intro n
+  cases n with
+  | zero =&gt; decide
+  | succ n =&gt;
+    simp only [after, Function.iterate_succ_apply]
+    rfl
+
+<span class="kw">theorem</span> three_unreachable : ∀ s : Fin 4, next s ≠ 3 := <span class="kw">by</span>
+  decide</code></pre>
+        <figcaption class="lean-provenance">Lesson001.lean · checked at 919d9de</figcaption>
+      </figure>
+    </div>
+    <aside class="aside"></aside>
+  </div>
+
+  <div class="row no-indent">
+    <div class="main">
+      <p>These are mathematical results about the model. That a real box obeys the model is an empirical claim. They belong to different categories, and Lean can only settle the first.</p>
+    </div>
+    <aside class="aside"></aside>
+  </div>
+
+  <!-- 1.5 -->
+  <h2><span class="num">1.5</span><span class="title">Three things never to conflate</span></h2>
+
+  <div class="row">
+    <div class="main">
+      <table class="data text">
+        <caption><span class="figure-number">Table 1.2</span> Reality, model and observation.</caption>
+        <thead><tr><th scope="col">Concept</th><th scope="col">Meaning</th></tr></thead>
+        <tbody>
+          <tr><td><em>Physical reality</em></td><td>Whatever actually exists and happens, independent of our description</td></tr>
+          <tr><td><em>Model state</em></td><td>The information a particular theory assigns to describe a situation</td></tr>
+          <tr><td><em>Observation</em></td><td>The result of a specified measurement or interaction</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <aside class="aside"></aside>
+  </div>
+
+  <div class="row no-indent">
+    <div class="main">
+      <p>In some classical theories we may treat the model state as fully specifying the system. In quantum mechanics, identifying the state with a complete description of an individual system becomes subtle and depends on interpretation. In statistical mechanics we routinely use states that deliberately discard microscopic information. Keeping the three apart is how we will understand how theories relate.</p>
+    </div>
+    <aside class="aside"></aside>
+  </div>
+
+  <!-- Bridge -->
+  <div class="row">
+    <div class="main">
+      <div class="bridge">
+        <p>Two objects whose <code>toString</code> output is equal can still behave differently after the next method call. <code>toString</code> is a display. Key a cache on it and you have treated two objects as one state because they look the same now. Programming-language theory calls the stronger notion <em>contextual equivalence</em>: two programs are equivalent when no surrounding context can tell them apart. That is ≈, with contexts in place of presses.</p>
+        <p>Two customers can have identical dashboards today, same plan and same usage, and one churns next month. A metric that matches now is ~, not ≈. Ask of any dashboard: what is the smallest description that predicts the thing I actually care about?</p>
+      </div>
+    </div>
+    <aside class="aside bridge-aside">
+      <p class="bridge-label">Bridge</p>
+      <p class="small">outside physics</p>
+    </aside>
+  </div>
+
+  <!-- Type hole -->
+  <section class="type-hole" aria-labelledby="hole-label">
+    <div class="body">
+      <p class="label" id="hole-label">The type hole</p>
+      <p class="statement">We have defined what a state is, but not which states are possible, or which transitions happen.</p>
+<pre>⊢ <span class="hole">?_</span> : which states are possible
+⊢ <span class="hole">?_</span> : which transitions happen</pre>
+      <p class="after">State 3 is in our model, but nothing reaches it: is it a possible state of the box, or bookkeeping? And we can write down any rule we like; nature doesn’t promise to follow it. An allowed process need not happen. That distinction is lesson 003. First, the question raised by states 1 and 3.</p>
+    </div>
+    <p class="big" aria-hidden="true">?_</p>
+  </section>
+
+  <!-- Checkpoint and exercises -->
+  <div class="end-matter">
+    <p class="label">Checkpoint</p>
+    <p class="prose">States 1 and 3 are internally distinct, and no experiment with this box can ever distinguish them. Are they two different physical states, or one physical state described twice?</p>
+    <details>
+      <summary><span class="pm" aria-hidden="true"></span>where this goes</summary>
+      <p class="answers">There is no assumption-free answer. The choice leads to one of the deepest ideas in modern physics, the difference between physical identity and representational redundancy, and eventually to gauge theory. That is lesson 002.</p>
+    </details>
+
+    <p class="label spaced">Exercises</p>
+    <ol class="exercises">
+      <li>Change the rule so that 3 goes to 0, leaving the rest. Compute the ≈ classes.</li>
+      <li>Find a rule on {0,&nbsp;1,&nbsp;2,&nbsp;3}, with the same parity display, for which ≈ has exactly two classes.</li>
+      <li>In Lean, prove that <code>ObsEquiv M</code> is an equivalence relation: build a term of type <code>Equivalence (ObsEquiv M)</code>.</li>
+      <li>In Lean, prove <code>¬ PredEquiv box 1 2</code>.</li>
+    </ol>
+    <details>
+      <summary><span class="pm" aria-hidden="true"></span>answers</summary>
+      <p class="answers">1. Four classes, {0}, {1}, {2} and {3}: every pair is eventually told apart.</p>
+      <p class="answers">2. The rule that changes nothing, <em>f</em>(<em>x</em>)&nbsp;=&nbsp;<em>x</em>. Then ≈ is the same as ~, with classes {0,&nbsp;2} and {1,&nbsp;3}.</p>
+      <p class="answers">3. Each property is inherited from equality of displays.</p>
+      <p class="answers">4. The displays already differ before any press, so take <code>n = 0</code>.</p>
+    </details>
+  </div>
+
+  <!-- Record -->
+  <div class="record">
+    <div class="rule" aria-hidden="true"></div>
+    <p class="label">Record</p>
+    <p class="version">Lesson 001, version 2 · checked at <code>919d9de</code> · not yet reviewed by a physicist</p>
+    <ul>
+      <li>The rule now sends 3 to 2, so two distinct states share a predictive class. <span class="by">Caught by AI review.</span></li>
+      <li>Removed a stray argument that stopped the Lean from compiling. <span class="by">Caught by AI review.</span></li>
+      <li>Added the Mathlib import that defines <code>f^[n]</code>. <span class="by">Caught by AI review.</span></li>
+      <li>Every claim in section 1.3 is now proved. <span class="by">Caught by AI review.</span></li>
+      <li><code>decide</code> needs the definition unfolded first. <span class="by">Caught by Lean.</span></li>
+    </ul>
+  </div>
+
+</main>
+
+<nav class="lesson-nav" aria-label="Lessons">
+  <div class="inner">
+    <a href="program.html">← <span class="sc">The program</span></a>
+    <span class="pending"><span class="sc strong">Lesson 002</span> · in preparation</span>
+  </div>
+</nav>
+
+<script src="js/box.js"></script>
+<footer class="site-footer">
+  <div class="inner">
+    <span>Lean into Physics, built in public.</span>
+    <span>Text and code: <a href="https://github.com/LeanIntoPhysics/website/blob/main/LICENSE">CC0</a>. JuliaMono: <a href="fonts/JuliaMono-LICENSE.txt">SIL Open Font License</a>.</span>
+  </div>
+</footer>
+<script src="js/site.js"></script>
+</body>
+</html>

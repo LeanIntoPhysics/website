@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lean into Physics</title>
+<meta name="description" content="The structure of physics, from first principles, for people who think in types: discrete first, the math of a game engine, every argument checked in Lean.">
+<meta name="theme-color" content="#F5F0E6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#191714" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script>document.documentElement.classList.add("js");try{var t=localStorage.getItem("lip-theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/print.css" media="print">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to the content</a>
+<header class="site-header">
+  <div class="inner">
+    <a class="brand" href="./">
+      <svg class="mark" width="40" height="16" viewBox="0 0 120 48" role="img" aria-label="The mark: four states, two of them joined"><path class="arc" d="M45 26 C 52 3, 98 3, 105 26" fill="none" stroke-width="2.6" stroke-linecap="round"/><circle cx="15" cy="34" r="6.5"/><circle cx="45" cy="34" r="6.5"/><circle cx="75" cy="34" r="6.5"/><circle cx="105" cy="34" r="6.5"/></svg>
+      <span>Lean into Physics</span>
+    </a>
+    <span class="spacer"></span>
+    <nav aria-label="Site">
+      <a href="./#contents">Contents</a>
+      <a href="program.html">Program</a>
+      <a href="https://github.com/LeanIntoPhysics">Source</a>
+      <button type="button" class="theme-switch" hidden aria-label="Switch colour theme">dark</button>
+    </nav>
+  </div>
+</header>
+<main class="home" id="main">
+  <div class="hero">
+    <div class="words">
+      <p class="lesson-number">A course in the structure of physics</p>
+      <h1>Lean into Physics</h1>
+      <p class="lede">States, what counts as the same state, laws, symmetries, and the conservation laws symmetries buy you. Taught in that order, from first principles, to people who think in types.</p>
+    </div>
+    <figure>
+      <svg class="mark" width="240" height="96" viewBox="0 0 120 48" role="img" aria-label="Four states, the last two joined by an arc"><path class="arc" d="M45 26 C 52 3, 98 3, 105 26" fill="none" stroke-width="2.6" stroke-linecap="round"/><circle cx="15" cy="34" r="6.5"/><circle cx="45" cy="34" r="6.5"/><circle cx="75" cy="34" r="6.5"/><circle cx="105" cy="34" r="6.5"/></svg>
+      <figcaption><span class="figure-number">The mark</span> Four states, three predictive classes: two stand alone, two are joined. It comes from lesson 001.</figcaption>
+    </figure>
+  </div>
+
+  <a class="start" href="lesson-001.html">
+    <span class="label">Start here · Lesson 001</span>
+    <span class="title">What is a physical state?</span>
+    <span class="q">What must be true of a description of the world for it to support a prediction?</span>
+    <span class="go">Read the lesson →</span>
+  </a>
+
+  <h2><span class="title">How it works</span></h2>
+  <div class="commitments">
+    <div>
+      <p class="term">Discrete first</p>
+      <p>Time steps, finite sums, lattices. The continuum arrives later, as the limit of a loop you have already written.</p>
+    </div>
+    <div>
+      <p class="term">The math of a game engine</p>
+      <p>Vectors, matrix × vector, and <code>v += a·dt; x += v·dt</code>. Anything beyond that is introduced where a lesson needs it, and entered in a math ledger.</p>
+    </div>
+    <div>
+      <p class="term">Every lesson proves something</p>
+      <p>The arguments are written in Lean 4 with Mathlib and checked by machine. Lean checks the mathematics; whether nature obeys the model is a separate question, and the lessons keep the two apart.</p>
+    </div>
+    <div>
+      <p class="term">Built in public</p>
+      <p>Written with an AI tutor, and it says so. Each lesson ends with a record of what was corrected and who caught it.</p>
+    </div>
+  </div>
+
+  <h2 id="contents"><span class="title">Contents</span></h2>
+  <p class="toc-intro">Thirty-two lessons in eight parts. Each is named by the question it answers.</p>
+    <section class="toc-part" aria-labelledby="part-I">
+      <h3 id="part-I"><span class="num">Part I</span><span>The shape of a theory</span></h3>
+      <ol>
+        <li class="ready"><span class="n">001</span><span class="t"><a href="lesson-001.html">What is a physical state?</a></span><span class="qq">When does a description support a prediction?</span></li>
+        <li><span class="n">002</span><span class="t">What makes two states different?</span><span class="qq">When are two descriptions the same physical state?</span></li>
+        <li><span class="n">003</span><span class="t">What is a physical law?</span><span class="qq">What turns a space of states into a theory?</span></li>
+        <li><span class="n">004</span><span class="t">Symmetry constrains dynamics</span><span class="qq">What must a law look like before we measure anything?</span></li>
+      </ol>
+    </section>
+    <section class="toc-part" aria-labelledby="part-II">
+      <h3 id="part-II"><span class="num">Part II</span><span>Mechanics, discretely</span></h3>
+      <ol>
+        <li><span class="n">005</span><span class="t">Histories and the action</span><span class="qq">What does it mean to score a whole history?</span></li>
+        <li><span class="n">006</span><span class="t">Why nature conserves things</span><span class="qq">When does a symmetry produce a conserved quantity?</span></li>
+        <li><span class="n">007</span><span class="t">Energy and time</span><span class="qq">Why does game physics drift, and what stops it?</span></li>
+        <li><span class="n">008</span><span class="t">Phase space</span><span class="qq">What does “the same amount of possibility” mean?</span></li>
+        <li><span class="n">009</span><span class="t">Oscillators</span><span class="qq">Why does everything near equilibrium oscillate?</span></li>
+        <li><span class="n">010</span><span class="t">Orbits</span><span class="qq">What does the radial-force theorem buy us for planets?</span></li>
+        <li><span class="n">011</span><span class="t">Frames of reference</span><span class="qq">Which observers agree on the laws?</span></li>
+      </ol>
+    </section>
+    <section class="toc-part" aria-labelledby="part-III">
+      <h3 id="part-III"><span class="num">Part III</span><span>The continuum, earned</span></h3>
+      <ol>
+        <li><span class="n">012</span><span class="t">The loop and its limit</span><span class="qq">What does the game loop settle to as dt → 0?</span></li>
+        <li><span class="n">013</span><span class="t">Many small steps</span><span class="qq">How do you build a large rotation out of tiny ones?</span></li>
+        <li><span class="n">014</span><span class="t">What only the continuum gives</span><span class="qq">What becomes exact in the limit that no finite step achieves?</span></li>
+      </ol>
+    </section>
+    <section class="toc-part" aria-labelledby="part-IV">
+      <h3 id="part-IV"><span class="num">Part IV</span><span>Many things, partly known</span></h3>
+      <ol>
+        <li><span class="n">015</span><span class="t">Coarse-graining</span><span class="qq">What is a macrostate?</span></li>
+        <li><span class="n">016</span><span class="t">Probability as state</span><span class="qq">What evolves when we don’t know the state?</span></li>
+        <li><span class="n">017</span><span class="t">Entropy and the arrow of time</span><span class="qq">Why does time have a direction when the laws don’t?</span></li>
+        <li><span class="n">018</span><span class="t">Temperature and equilibrium</span><span class="qq">What does it mean for two systems to agree?</span></li>
+      </ol>
+    </section>
+    <section class="toc-part" aria-labelledby="part-V">
+      <h3 id="part-V"><span class="num">Part V</span><span>Fields and locality</span></h3>
+      <ol>
+        <li><span class="n">019</span><span class="t">From particles to fields</span><span class="qq">What is a field, really?</span></li>
+        <li><span class="n">020</span><span class="t">Locality and causality</span><span class="qq">Why can’t influence travel instantly?</span></li>
+        <li><span class="n">021</span><span class="t">Gauge, revisited</span><span class="qq">What were the potentials in 002?</span></li>
+        <li><span class="n">022</span><span class="t">Light</span><span class="qq">How do fields carry energy away?</span></li>
+      </ol>
+    </section>
+    <section class="toc-part" aria-labelledby="part-VI">
+      <h3 id="part-VI"><span class="num">Part VI</span><span>Spacetime</span></h3>
+      <ol>
+        <li><span class="n">023</span><span class="t">Relativity as symmetry</span><span class="qq">Which transformations leave the speed of light alone?</span></li>
+        <li><span class="n">024</span><span class="t">The geometry of spacetime</span><span class="qq">What stays invariant when time and space mix?</span></li>
+        <li><span class="n">025</span><span class="t">Gravity as geometry</span><span class="qq">Why can’t you feel free fall?</span></li>
+      </ol>
+    </section>
+    <section class="toc-part" aria-labelledby="part-VII">
+      <h3 id="part-VII"><span class="num">Part VII</span><span>Quantum</span></h3>
+      <ol>
+        <li><span class="n">026</span><span class="t">States as vectors</span><span class="qq">What replaces a point in state space?</span></li>
+        <li><span class="n">027</span><span class="t">Observables and measurement</span><span class="qq">What does a measurement return, and how often?</span></li>
+        <li><span class="n">028</span><span class="t">Unitary dynamics</span><span class="qq">How does a quantum state evolve?</span></li>
+        <li><span class="n">029</span><span class="t">Composite systems</span><span class="qq">What is entanglement, structurally?</span></li>
+        <li><span class="n">030</span><span class="t">What the formalism doesn’t say</span><span class="qq">Which questions are interpretation?</span></li>
+      </ol>
+    </section>
+    <section class="toc-part" aria-labelledby="part-VIII">
+      <h3 id="part-VIII"><span class="num">Part VIII</span><span>How theories fit together</span></h3>
+      <ol>
+        <li><span class="n">031</span><span class="t">Symmetry breaking and phases</span><span class="qq">How do symmetric laws produce asymmetric worlds?</span></li>
+        <li><span class="n">032</span><span class="t">Effective theories</span><span class="qq">Why do superseded theories keep working?</span></li>
+      </ol>
+    </section>
+  <p class="toc-legend">Lessons in red are published. The rest are planned, and the plan will change.</p>
+
+  <div class="coda">
+    <p>Why physics, and why this way? <a href="program.html">Read the program →</a></p>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="inner">
+    <span>Lean into Physics, built in public.</span>
+    <span>Text and code: <a href="https://github.com/LeanIntoPhysics/website/blob/main/LICENSE">CC0</a>. JuliaMono: <a href="fonts/JuliaMono-LICENSE.txt">SIL Open Font License</a>.</span>
+  </div>
+</footer>
+<script src="js/site.js"></script>
+</body>
+</html>

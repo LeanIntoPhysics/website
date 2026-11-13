@@ -1,0 +1,121 @@
+/* Lean into Physics: print stylesheet
+   Turns the HTML lesson template into the 7.5 x 10 in book.
+   Target: Paged.js (paged media polyfill) in Chromium, or PrinceXML.
+   The web template's markup is assumed to use these hooks:
+     .lesson, .lesson-number, .lesson-title, .question
+     .row > .main + .aside           (a paragraph and its margin material)
+     .sidenote, .newmath, .figure-live, .figure-static
+     .lean, .lean-provenance, .bridge, .type-hole, .answers, .record
+*/
+
+/* ---------- Page ---------- */
+@page {
+  size: 7.5in 10in;
+  margin: 1in 0.4167in 0.75in 0.6667in;      /* 96 / 40 / 72 / 64 px */
+  @top-left   { content: none; }
+}
+/* Wide outer margin: verso has it on the left, recto on the right.
+   Margin boxes hold the running heads; the margin column itself is
+   made by .row below and mirrored with the :left/:right page names. */
+@page :left {
+  margin-left: 0.4167in;                      /* outer */
+  margin-right: 0.6667in;                     /* inner (gutter) */
+  @top-left  { content: counter(page); font: 400 12.5px/1 "Source Serif 4", serif;
+               font-variant-numeric: oldstyle-nums; color: #1D1B18; }
+  @top-center{ content: "Lean into Physics"; font: 600 12.5px/1 "Source Serif 4", serif;
+               font-variant-caps: all-small-caps; letter-spacing: .08em; color: #5F584E; }
+}
+@page :right {
+  margin-left: 0.6667in;
+  margin-right: 0.4167in;
+  @top-center{ content: string(lesson-head); font: italic 400 12.5px/1 "Source Serif 4", serif; color: #5F584E; }
+  @top-right { content: counter(page); font: 400 12.5px/1 "Source Serif 4", serif;
+               font-variant-numeric: oldstyle-nums; color: #1D1B18; }
+}
+@page opener { @top-left { content: none; } @top-center { content: none; } @top-right { content: none; } }
+@page :blank { @top-left { content: none; } @top-center { content: none; } @top-right { content: none; } }
+
+/* ---------- Ink, not screen ---------- */
+:root {
+  --paper: #FFFFFF;          /* the stock is the paper; don't print a tint */
+  --ink: #1D1B18;
+  --muted: #5F584E;
+  --rubric: #A3321C;         /* the only colour; reads as dark grey in mono print */
+  --code: #283A52;
+  --rule: #B9B0A0;           /* darker than screen so 1px rules survive */
+}
+html, body { background: var(--paper) !important; color: var(--ink); }
+body {
+  font-family: "Source Serif 4", "Lean Symbols", Georgia, serif;
+  font-size: 12pt; line-height: 25px;
+  font-variant-numeric: oldstyle-nums proportional-nums;
+  hyphens: auto; text-align: justify; text-wrap: pretty;
+  orphans: 2; widows: 2;
+}
+header, nav, .theme-switch, .skip-link { display: none !important; }
+
+/* ---------- Chapter opener ---------- */
+.lesson { break-before: right; page: opener; }
+.lesson-title { string-set: lesson-head content(text); }  /* set to "001 · Title" in markup */
+.lesson-number, .question-label, .newmath .label, .type-hole .label,
+.figure-number, .note-marker { color: var(--rubric); }
+.question { font-style: italic; font-size: 25px; line-height: 34px; break-after: avoid; }
+p + p { text-indent: 1.5em; margin-top: 0; }
+
+/* ---------- Main column + wide margin ---------- */
+/* Text 448px (~64 characters), gap 24px, margin column 144px.
+   Paged.js lets content know its page side via .pagedjs_left_page /
+   .pagedjs_right_page, which is how the margin column mirrors. */
+.row { display: grid; grid-template-columns: 448px 144px; column-gap: 24px; align-items: start; }
+.row > .main  { grid-column: 1; grid-row: 1; min-width: 0; }
+.row > .aside { grid-column: 2; grid-row: 1; min-width: 0; }
+.pagedjs_left_page .row { grid-template-columns: 144px 448px; }
+.pagedjs_left_page .row > .main  { grid-column: 2; }
+.pagedjs_left_page .row > .aside { grid-column: 1; text-align: right; }
+/* Prince: replace the three rules above with float: sidenote / prince-float. */
+
+.sidenote, .newmath, .aside figcaption {
+  font-size: 12.5px; line-height: 18px; color: var(--muted); text-align: left;
+  break-inside: avoid;
+}
+/* Phone-width <details> notes print open, as margin notes */
+details { display: block; }
+details > summary { display: none; }
+details > * { display: block !important; }
+.newmath { border-top: 3px double var(--ink); padding-top: 8px; color: var(--ink); }
+
+/* ---------- Lean ---------- */
+code, pre, .lean { font-family: "JuliaMono", "Lean Symbols", monospace;
+                   font-variant-numeric: lining-nums tabular-nums; color: var(--code); }
+.lean { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+        padding: 12px 0 10px; font-size: 12.5px; line-height: 20px; break-inside: avoid;
+        white-space: pre-wrap; }               /* no horizontal scroll on paper */
+.lean-provenance { font-size: 9pt; color: var(--muted); }
+.lean-provenance a::after { content: " · " attr(href); font-size: 8pt; word-break: break-all; }
+
+/* ---------- Figures ---------- */
+.figure-live { display: none !important; }      /* the interactive state */
+.figure-static { display: block !important; }   /* its printed state */
+figure { break-inside: avoid; margin: 0; }
+figcaption { font-size: 12.5px; line-height: 18px; color: var(--muted); }
+.figure-wide { width: 616px; }                  /* text column + margin */
+table { border-collapse: collapse; font-variant-numeric: lining-nums tabular-nums; }
+th { border-bottom: 1px solid var(--ink); font-variant-caps: all-small-caps; letter-spacing: .08em;
+     color: var(--muted); text-align: left; }
+td { border-bottom: 1px solid var(--rule); }
+caption { caption-side: top; text-align: left; }
+
+/* Interactive controls print as plain red figures, no dotted rule */
+button { all: unset; color: var(--rubric); font-family: "JuliaMono", monospace; }
+
+/* ---------- End matter ---------- */
+.bridge { margin: 2em 0; padding-left: 24px; font-size: 15.5px; line-height: 24px; }
+.type-hole { break-inside: avoid; border-top: 1px solid var(--rule); padding-top: 28px; margin-top: 2em; }
+.type-hole .slot { border: 1.5px dashed var(--rubric); }
+.checkpoint, .exercises { break-before: auto; }
+.answers { font-size: 13px; line-height: 19px; color: var(--muted); }
+.record { text-align: center; font-size: 12.5px; color: var(--muted); break-inside: avoid; margin-top: 3em; }
+
+/* ---------- Links ---------- */
+a { color: inherit; text-decoration: none; }
+.lean-provenance a, .record a { text-decoration: underline; text-decoration-thickness: 0.5px; }

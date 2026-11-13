@@ -1,0 +1,484 @@
+/* Lean into Physics: screen stylesheet for every page.
+   Values follow the design mockups (lesson page desktop light; phone 360 light and dark; figure 1.1 states).
+   Class hooks match print.css, which turns the same markup into the book. */
+
+@font-face {
+  font-family: "JuliaMono";
+  src: url("../fonts/JuliaMono.woff2") format("woff2");
+  font-display: swap;
+}
+/* Lean's symbols come from JuliaMono even inside serif text. */
+@font-face {
+  font-family: "Lean Symbols";
+  src: url("../fonts/JuliaMono.woff2") format("woff2");
+  font-display: swap;
+  unicode-range: U+2190-21FF, U+2200-22FF, U+27E8-27E9, U+2115, U+211D, U+2124, U+207B, U+1D65, U+22A2;
+}
+
+:root {
+  --paper: #F5F0E6;
+  --paper-deep: #EDE6D8;
+  --ink: #1D1B18;
+  --muted: #5F584E;
+  --rubric: #A3321C;
+  --code: #283A52;
+  --rule: #CEC5B4;
+  --serif: "Source Serif 4", "Lean Symbols", Georgia, serif;
+  --mono: "JuliaMono", "Lean Symbols", ui-monospace, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #191714; --paper-deep: #23201C; --ink: #E9E2D4; --muted: #A89F90;
+    --rubric: #E88A6E; --code: #9DB4D3; --rule: #4A443B;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #191714; --paper-deep: #23201C; --ink: #E9E2D4; --muted: #A89F90;
+  --rubric: #E88A6E; --code: #9DB4D3; --rule: #4A443B;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+}
+a { color: var(--rubric); }
+a:hover { color: var(--ink); }
+:focus-visible { outline: 2px solid var(--rubric); outline-offset: 3px; }
+button { font: inherit; }
+.skip-link { position: absolute; left: -9999px; }
+.skip-link:focus { left: 16px; top: 16px; background: var(--paper); padding: 4px 8px; }
+
+/* Small caps labels used throughout */
+.sc {
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.08em;
+}
+.label {
+  color: var(--rubric);
+  font-size: 13.5px;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* ---------- Header ---------- */
+.site-header { border-bottom: 1px solid var(--rule); }
+.site-header .inner {
+  max-width: 1000px; margin: 0 auto; padding: 18px 24px;
+  display: flex; flex-wrap: wrap; gap: 10px 28px; align-items: center;
+}
+.brand { display: flex; gap: 12px; align-items: center; text-decoration: none; color: var(--ink); }
+.brand svg { display: block; }
+.mark .arc { stroke: var(--rubric); }
+.mark circle { fill: var(--ink); }
+.brand span { font-size: 15px; font-variant-caps: all-small-caps; letter-spacing: 0.08em; font-weight: 600; }
+.site-header .spacer { flex: 1; }
+.site-header nav { display: flex; gap: 24px; font-size: 15px; font-variant-caps: all-small-caps; letter-spacing: 0.08em; }
+.site-header nav a { color: var(--ink); text-decoration: none; }
+.site-header nav a:hover, .site-header nav a[aria-current="page"] { color: var(--rubric); }
+.theme-switch {
+  background: none; border: none; padding: 0; color: var(--muted); cursor: pointer;
+  font-family: var(--serif); font-size: 15px; font-variant-caps: all-small-caps; letter-spacing: 0.08em;
+}
+.theme-switch:hover { color: var(--rubric); }
+
+/* ---------- Lesson ---------- */
+main.lesson { max-width: 1000px; margin: 0 auto; padding: 72px 24px 24px; }
+.opener { margin-bottom: 56px; max-width: 720px; }
+.lesson-number {
+  margin: 0; color: var(--rubric); font-size: 15px;
+  font-variant-caps: all-small-caps; letter-spacing: 0.08em; font-weight: 600;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.lesson-title {
+  margin: 10px 0 0; font-weight: 500; font-size: 54px; line-height: 1.08;
+  text-wrap: balance; font-variation-settings: "opsz" 60;
+}
+.question-block { margin-top: 40px; }
+.question {
+  margin: 6px 0 0; font-size: 28px; line-height: 1.38; font-style: italic; text-wrap: balance;
+}
+
+/* A paragraph and its margin material */
+.row { display: flex; flex-wrap: wrap; gap: 0 56px; align-items: flex-start; }
+.row > .main { flex: 999 1 480px; min-width: 0; max-width: 600px; }
+.row > .aside { flex: 1 1 200px; max-width: 240px; min-width: 0; padding-top: 4px; }
+.row.spaced { margin-bottom: 28px; }
+
+.main p, .prose {
+  margin: 0; font-size: 19px; line-height: 31px;
+  font-variant-numeric: oldstyle-nums proportional-nums;
+  text-wrap: pretty; hyphens: auto;
+}
+.row + .row .main > p:first-child { text-indent: 1.4em; }
+.row.no-indent .main > p:first-child,
+h2 + .row .main > p:first-child { text-indent: 0; }
+
+.dropcap {
+  float: left; font-size: 66px; line-height: 54px; margin: 4px 8px 0 -2px;
+  color: var(--rubric); font-weight: 500;
+}
+
+h2 {
+  margin: 48px 0 14px; font-weight: 400; font-size: 25px; line-height: 1.25;
+  display: flex; gap: 12px; align-items: baseline;
+}
+h2 .num {
+  color: var(--rubric); font-size: 16px; font-weight: 600;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+h2 .title { font-style: italic; }
+
+.thesis { font-weight: 600; }
+
+code {
+  font-family: var(--mono); font-size: 0.84em; color: var(--code);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+/* Sidenotes */
+.note-marker {
+  color: var(--rubric); font-size: 12px; line-height: 0; font-weight: 600;
+  font-variant-numeric: lining-nums tabular-nums; margin-left: 1px;
+}
+.sidenote, .aside figcaption, .aside .small {
+  margin: 0 0 14px; font-size: 14.5px; line-height: 21px; color: var(--muted);
+  font-variant-numeric: oldstyle-nums proportional-nums; text-wrap: pretty;
+}
+.sidenote .n {
+  color: var(--rubric); font-weight: 600; font-variant-numeric: lining-nums tabular-nums; margin-right: 5px;
+}
+
+/* Margin notes are <details>: always open in the margin, collapsible at phone width */
+details.note > summary { display: none; }
+details.note > summary .label, details.math > summary .label { font-size: 13px; }
+details.math > summary { display: none; }
+
+/* New math: a ledger entry */
+.newmath {
+  border-top: 3px double var(--ink); padding-top: 8px; margin-bottom: 14px;
+  font-size: 14.5px; line-height: 21px; color: var(--ink);
+  font-variant-numeric: oldstyle-nums proportional-nums; text-wrap: pretty;
+}
+.newmath .head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  color: var(--rubric); font-size: 13.5px; font-variant-caps: all-small-caps;
+  letter-spacing: 0.08em; font-weight: 600;
+}
+.newmath .head .id { font-variant-numeric: lining-nums tabular-nums; }
+.newmath .term { margin: 4px 0 2px; font-style: italic; font-size: 17px; line-height: 23px; }
+.newmath p { margin: 0; }
+.newmath .ledger-link {
+  display: inline-block; margin-top: 6px; font-size: 13px;
+  font-variant-caps: all-small-caps; letter-spacing: 0.08em; color: var(--muted);
+}
+
+/* Displayed math */
+.display {
+  display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline;
+  gap: 8px 24px; font-size: 21px; margin: 22px 0;
+}
+.display .eqnum { font-size: 15px; color: var(--muted); font-variant-numeric: oldstyle-nums proportional-nums; }
+.display sup { font-size: 13px; }
+
+/* Lean */
+figure.lean-figure {
+  margin: 8px 0 24px; padding: 12px 0 10px;
+  border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+}
+pre.lean {
+  margin: 0; font-family: var(--mono); font-size: 14.5px; line-height: 1.55;
+  color: var(--code); white-space: pre; overflow-x: auto;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+pre.lean .kw { color: var(--ink); font-weight: 600; }
+.lean-provenance {
+  margin-top: 8px; font-family: var(--mono); font-size: 12.5px; color: var(--muted);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.lean-provenance a { color: var(--muted); }
+
+/* Tables */
+table.data { border-collapse: collapse; margin: 8px 0 28px; min-width: 300px; }
+table.data caption {
+  caption-side: top; text-align: left; padding-bottom: 8px;
+  font-size: 14.5px; line-height: 21px; color: var(--muted);
+  font-variant-numeric: oldstyle-nums proportional-nums;
+}
+table.data th {
+  font-size: 13.5px; color: var(--muted); font-variant-caps: all-small-caps; letter-spacing: 0.08em;
+  font-weight: 600; text-align: left; padding: 8px 16px 8px 0; border-bottom: 1px solid var(--ink);
+}
+table.data td {
+  font-size: 17px; font-variant-numeric: lining-nums tabular-nums;
+  padding: 6px 16px 6px 0; border-bottom: 1px solid var(--rule); vertical-align: top;
+}
+table.data.text td { font-size: 16px; line-height: 23px; font-variant-numeric: oldstyle-nums proportional-nums; }
+.figure-number {
+  color: var(--rubric); font-variant-caps: all-small-caps; letter-spacing: 0.08em; font-weight: 600;
+}
+
+/* Interactive figure */
+figure.box-figure {
+  margin: 0; padding: 18px 0 14px;
+  border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+}
+.box-figure .controls { margin: 0 0 16px; font-size: 19px; line-height: 32px; }
+.num-control {
+  font-family: var(--mono); font-size: 0.92em; color: var(--rubric);
+  background: none; border: none; border-bottom: 1.5px dotted var(--rubric);
+  padding: 0 4px; margin: 0 1px; cursor: ew-resize; touch-action: none;
+  font-variant-numeric: lining-nums;
+}
+.num-control:hover, .num-control:focus-visible { border-bottom-style: solid; }
+.num-control.dragging { background: var(--paper-deep); border-bottom-style: solid; }
+.box-figure .hint {
+  margin: 4px 0 0; font-size: 12.5px; line-height: 18px; color: var(--muted);
+  font-variant-caps: all-small-caps; letter-spacing: 0.08em; visibility: hidden;
+}
+@media (hover: none) { .box-figure .hint { display: none; } }
+.box-figure:has(.num-control:hover, .num-control:focus-visible, .num-control.dragging) .hint { visibility: visible; }
+.scale {
+  font-family: var(--mono); font-size: 0.75em; margin-left: 6px;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.scale span { padding: 0 2px; color: var(--muted); }
+.scale span.on { color: var(--rubric); font-weight: 600; }
+.word-control {
+  background: none; border: none; padding: 10px 4px; margin: -10px -2px;
+  color: var(--rubric); font-family: var(--serif); font-variant-caps: all-small-caps;
+  letter-spacing: 0.08em; font-weight: 600; font-size: 1.05em; cursor: pointer;
+}
+.word-control:disabled { color: var(--muted); cursor: default; }
+.trace { font-family: var(--mono); font-variant-numeric: lining-nums tabular-nums; overflow-x: auto; }
+.trace .tr { display: flex; align-items: center; }
+.trace .lab {
+  width: 96px; flex: none; font-family: var(--serif); font-size: 13px; color: var(--muted);
+  font-variant-caps: all-small-caps; letter-spacing: 0.08em; font-weight: 600;
+}
+.trace .lab.state { font-size: 12px; font-style: italic; font-variant-caps: normal; letter-spacing: 0; font-weight: 400; }
+.trace .c { width: 40px; flex: none; text-align: center; }
+.trace .head { padding-bottom: 4px; border-bottom: 1px solid var(--ink); }
+.trace .head .c { font-size: 12px; padding-bottom: 3px; color: var(--muted); }
+.trace .head .c.now { color: var(--rubric); font-weight: 600; box-shadow: inset 0 -2px 0 var(--rubric); }
+.trace .shows { min-height: 27px; padding-top: 4px; }
+.trace .shows.b { padding-top: 6px; }
+.trace .shows .c { font-size: 17px; color: var(--ink); }
+.trace .shows .c.hidden { color: var(--rule); }
+.trace .states { min-height: 16px; }
+.trace .states .c { font-size: 11px; color: var(--muted); }
+.trace .cmp { min-height: 22px; border-top: 1px solid var(--rule); }
+.trace .cmp .c { font-size: 13px; color: var(--ink); }
+.box-figure .msg { margin: 12px 0 0; font-size: 18px; line-height: 27px; font-style: italic; min-height: 27px; }
+.box-figure figcaption, figure.static figcaption {
+  margin-top: 12px; font-size: 14.5px; line-height: 21px; color: var(--muted);
+  font-variant-numeric: oldstyle-nums proportional-nums;
+}
+/* Static fallback: every starting state at once. Shown without JavaScript; print.css shows it in print. */
+.js .figure-static { display: none; }
+html:not(.js) .figure-live { display: none; }
+.figure-static { margin: 0; padding: 14px 0 12px; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+.figure-static .fs-head {
+  display: flex; padding-bottom: 3px; border-bottom: 1px solid var(--ink);
+  font-size: 13px; color: var(--muted); font-variant-caps: all-small-caps; letter-spacing: 0.08em; font-weight: 600;
+}
+.figure-static .fs-row { display: flex; align-items: center; padding: 4px 0; border-bottom: 1px solid var(--rule); }
+.figure-static .fs-from { width: 64px; flex: none; font-size: 15px; }
+.figure-static .fs-from code, .figure-static .fs-c { font-family: var(--mono); color: var(--ink); font-variant-numeric: lining-nums tabular-nums; }
+.figure-static .fs-c { width: 30px; flex: none; text-align: center; font-size: 15px; }
+.figure-static .fs-c sub { font-size: 10px; color: var(--muted); }
+.figure-static figcaption { margin-top: 10px; font-size: 14.5px; line-height: 21px; color: var(--muted); }
+
+/* The mark in the margin */
+.aside figure { margin: 0 0 14px; }
+.aside figure svg { display: block; }
+.aside figcaption { margin-top: 8px; }
+
+/* Bridge */
+.bridge { padding-left: 28px; margin: 40px 0; }
+.bridge p { font-size: 18px; }
+.bridge p + p { margin-top: 12px; }
+.bridge-label { margin: 44px 0 0; font-size: 14px; color: var(--muted); font-variant-caps: all-small-caps; letter-spacing: 0.08em; font-weight: 600; }
+.bridge-label + .small { margin-top: 2px; font-style: italic; }
+
+/* The type hole */
+.type-hole {
+  margin: 24px 0 48px; padding-top: 32px; border-top: 1px solid var(--rule);
+  display: flex; flex-wrap: wrap; gap: 12px 56px; align-items: flex-start;
+}
+.type-hole .body { flex: 999 1 480px; min-width: 0; max-width: 600px; }
+.type-hole .statement { margin: 8px 0 0; font-size: 25px; line-height: 1.4; font-style: italic; text-wrap: balance; }
+.type-hole pre {
+  margin: 18px 0 0; font-family: var(--mono); font-size: 14px; line-height: 1.7; color: var(--code);
+  font-variant-numeric: lining-nums tabular-nums; overflow-x: auto;
+}
+.type-hole pre .hole { color: var(--rubric); }
+.type-hole .big {
+  flex: 1 1 200px; margin: 0; font-family: var(--mono); font-size: 72px; line-height: 1;
+  color: var(--rubric); letter-spacing: -0.04em;
+}
+.type-hole .after { margin: 18px 0 0; font-size: 17px; line-height: 27px; }
+
+/* Checkpoint and exercises */
+.end-matter { max-width: 600px; }
+.end-matter .prose { margin-top: 6px; }
+.end-matter .prose + .prose { margin-top: 12px; }
+details { margin-top: 4px; }
+summary {
+  cursor: pointer; list-style: none; display: inline-flex; gap: 6px; align-items: center; min-height: 36px;
+  font-size: 14px; color: var(--rubric); font-variant-caps: all-small-caps; letter-spacing: 0.08em; font-weight: 600;
+}
+summary::-webkit-details-marker { display: none; }
+summary .pm { font-family: var(--mono); }
+details > summary .pm::before { content: "+"; }
+details[open] > summary .pm::before { content: "\2212"; }
+.answers { margin: 0; font-size: 14.5px; line-height: 21px; color: var(--muted); font-variant-numeric: oldstyle-nums proportional-nums; text-wrap: pretty; }
+.answers + .answers { margin-top: 6px; }
+ol.exercises {
+  margin: 8px 0 0; padding-left: 2.2em; font-size: 19px; line-height: 31px;
+  text-wrap: pretty; hyphens: auto; font-variant-numeric: lining-nums tabular-nums;
+}
+ol.exercises li { margin-bottom: 8px; }
+.end-matter .label.spaced { margin-top: 24px; }
+
+/* Record */
+.record {
+  margin: 56px 0 0; max-width: 600px; text-align: center; color: var(--muted);
+  font-size: 14px; line-height: 21px; font-variant-numeric: oldstyle-nums proportional-nums;
+}
+.record .rule { width: 48px; height: 1px; background: var(--rule); margin: 0 auto 14px; }
+.record .label { color: var(--muted); }
+.record p { margin: 6px 0 0; }
+.record .version { font-style: italic; }
+.record code { font-style: normal; font-size: 0.95em; color: var(--muted); }
+.record ul { list-style: none; margin: 10px 0 0; padding: 0; }
+.record li { margin: 4px 0; }
+.record .by { font-style: italic; }
+
+/* Lesson navigation */
+.lesson-nav { border-top: 1px solid var(--rule); margin-top: 64px; }
+.lesson-nav .inner {
+  max-width: 1000px; margin: 0 auto; padding: 28px 24px;
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; font-size: 15px;
+}
+.lesson-nav a { color: var(--ink); text-decoration: none; }
+.lesson-nav a.next { display: inline-flex; align-items: center; gap: 10px; color: var(--rubric); }
+.lesson-nav .pending { color: var(--muted); }
+.lesson-nav .sc.strong { font-weight: 600; font-variant-numeric: lining-nums tabular-nums; }
+
+/* ---------- Narrow screens ---------- */
+@media (max-width: 560px) {
+  main.lesson { padding: 48px 16px 16px; }
+  .site-header .inner, .lesson-nav .inner { padding-left: 16px; padding-right: 16px; }
+  .lesson-title { font-size: 40px; }
+  .question { font-size: 23px; }
+  .main p, .prose, ol.exercises { font-size: 18px; line-height: 29px; }
+  .row > .aside { max-width: none; margin: 2px 0 14px; padding: 0; }
+  .row > .aside:empty { display: none; }
+  .row > .aside.bridge-aside { order: -1; margin: 32px 0 0; }
+  .row > .aside.bridge-aside .bridge-label { margin: 0; }
+  .bridge { margin-top: 8px; }
+  details.note > summary, details.math > summary { display: inline-flex; }
+  details.note > p, details.math > div { padding-left: 14px; border-left: 1px solid var(--rule); margin-top: 2px; }
+  .newmath { border-top: none; padding-top: 0; }
+  .newmath .head { display: none; }
+  .site-header nav { gap: 16px; font-size: 14px; }
+  .site-header .nav-ledger { display: none; }
+  .bridge { padding-left: 16px; }
+  .type-hole .big { font-size: 48px; }
+  .trace .lab { width: 64px; }
+  .trace .c { width: 30px; }
+  .display { font-size: 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+/* ---------- Home ---------- */
+main.home { max-width: 1000px; margin: 0 auto; padding: 72px 24px 24px; }
+.home .hero { display: flex; flex-wrap: wrap; gap: 32px 56px; align-items: flex-end; margin-bottom: 64px; }
+.home .hero .words { flex: 999 1 480px; max-width: 640px; }
+.home .hero h1 {
+  margin: 10px 0 0; font-weight: 500; font-size: 64px; line-height: 1.04;
+  font-variation-settings: "opsz" 60; text-wrap: balance;
+}
+.home .lede { margin: 28px 0 0; font-size: 24px; line-height: 1.42; font-style: italic; text-wrap: pretty; }
+.home .hero figure { flex: 1 1 200px; max-width: 240px; margin: 0; }
+.home .hero figure svg { display: block; width: 100%; height: auto; }
+.home .hero figcaption { margin-top: 10px; font-size: 14.5px; line-height: 21px; color: var(--muted); text-wrap: pretty; }
+
+.home h2 { margin-top: 64px; }
+.home .prose-block { max-width: 600px; }
+.home .prose-block p { margin: 0; font-size: 19px; line-height: 31px; text-wrap: pretty; hyphens: auto; font-variant-numeric: oldstyle-nums proportional-nums; }
+.home .prose-block p + p { text-indent: 1.4em; }
+
+.start {
+  display: block; max-width: 600px; padding: 22px 0 20px; text-decoration: none; color: var(--ink);
+  border-top: 3px double var(--ink); border-bottom: 1px solid var(--rule);
+}
+.start:hover { color: var(--ink); }
+.start .title { display: block; margin-top: 6px; font-size: 30px; line-height: 1.2; font-weight: 500; }
+.start .q { display: block; margin-top: 8px; font-size: 19px; line-height: 29px; font-style: italic; color: var(--muted); }
+.start .go { display: inline-block; margin-top: 14px; color: var(--rubric); font-size: 15px; font-variant-caps: all-small-caps; letter-spacing: 0.08em; font-weight: 600; }
+.start:hover .go { text-decoration: underline; }
+
+.commitments { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px 56px; margin-top: 8px; }
+.commitments .term { margin: 0; font-size: 19px; font-weight: 600; line-height: 1.3; }
+.commitments p { margin: 6px 0 0; font-size: 17px; line-height: 27px; color: var(--ink); text-wrap: pretty; font-variant-numeric: oldstyle-nums proportional-nums; }
+
+.toc-intro { max-width: 600px; margin: 0 0 8px; font-size: 17px; line-height: 27px; color: var(--muted); }
+.toc-part { margin: 36px 0 0; }
+.toc-part h3 { margin: 0 0 8px; font-weight: 400; font-size: 21px; font-style: italic; display: flex; gap: 12px; align-items: baseline; }
+.toc-part h3 .num { font-style: normal; color: var(--rubric); font-size: 15px; font-weight: 600; font-variant-caps: all-small-caps; letter-spacing: 0.08em; }
+.toc-part h3 .num { font-variant-numeric: lining-nums; }
+.toc-part ol { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
+.toc-part li {
+  display: grid; grid-template-columns: 48px minmax(0, 1fr) minmax(0, 1.2fr); gap: 4px 20px;
+  padding: 8px 0; border-bottom: 1px solid var(--rule); align-items: baseline;
+}
+.toc-part .n { font-family: var(--mono); font-size: 13px; color: var(--muted); font-variant-numeric: lining-nums tabular-nums; }
+.toc-part .t { font-size: 17px; line-height: 24px; color: var(--muted); }
+.toc-part .qq { font-size: 15px; line-height: 22px; font-style: italic; color: var(--muted); }
+.toc-part li.ready .t a { color: var(--rubric); font-weight: 600; }
+.toc-part li.ready .n, .toc-part li.ready .qq { color: var(--ink); }
+.toc-legend { margin: 14px 0 0; font-size: 14.5px; line-height: 21px; color: var(--muted); }
+
+.coda { max-width: 600px; margin: 72px 0 0; padding-top: 24px; border-top: 1px solid var(--rule); }
+.coda p { margin: 0; font-size: 19px; line-height: 31px; }
+
+/* ---------- Program (an essay page) ---------- */
+main.essay { max-width: 1000px; margin: 0 auto; padding: 72px 24px 24px; }
+.essay .body { max-width: 600px; }
+.essay .body p { margin: 0; font-size: 19px; line-height: 31px; text-wrap: pretty; hyphens: auto; font-variant-numeric: oldstyle-nums proportional-nums; }
+.essay .body p + p { text-indent: 1.4em; }
+.essay .body p.break { margin-top: 31px; text-indent: 0; }
+
+/* ---------- Footer ---------- */
+.site-footer { border-top: 1px solid var(--rule); margin-top: 64px; }
+.site-footer .inner {
+  max-width: 1000px; margin: 0 auto; padding: 24px 24px 40px; display: flex; flex-wrap: wrap; gap: 8px 28px;
+  font-size: 14px; line-height: 21px; color: var(--muted);
+}
+.site-footer a { color: var(--muted); }
+.lesson-nav + .site-footer { margin-top: 0; }
+
+@media (max-width: 560px) {
+  main.home, main.essay { padding: 48px 16px 16px; }
+  .site-footer .inner { padding-left: 16px; padding-right: 16px; }
+  .home .hero h1 { font-size: 44px; }
+  .home .lede { font-size: 20px; }
+  .home .hero figure { max-width: 180px; }
+  .home .prose-block p, .essay .body p, .coda p { font-size: 18px; line-height: 29px; }
+  .start .title { font-size: 25px; }
+  .toc-part li { grid-template-columns: 40px minmax(0, 1fr); }
+  .toc-part .qq { grid-column: 2; }
+}
