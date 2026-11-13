@@ -1,0 +1,10 @@
+@font-face{font-family:"SS4";src:url("fonts/SourceSerif4-Regular.woff2");font-weight:400}
+@font-face{font-family:"SS4";src:url("fonts/SourceSerif4-Semibold.woff2");font-weight:600}
+@font-face{font-family:"JuliaMono";src:url("../fonts/JuliaMono.woff2")}
+*{box-sizing:border-box;margin:0}
+html,body{width:1200px;height:630px;overflow:hidden}
+body{background:#F5F0E6;color:#1D1B18;font-family:"SS4",Georgia,serif;position:relative}
+.frame{position:absolute;inset:28px;border:2px solid #CEC5B4}
+.mark path{stroke:#A3321C}.mark circle{fill:#1D1B18}
+.url{position:absolute;left:88px;bottom:72px;font:400 24px "JuliaMono",monospace;color:#5F584E;letter-spacing:.02em}
+.sc{font-variant-caps:all-small-caps;letter-spacing:.1em;color:#A3321C;font-weight:600}
